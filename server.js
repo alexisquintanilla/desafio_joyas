@@ -1,8 +1,19 @@
-const express = require('express')
-const joyas = require('./data/joyas.js')
-const app = express()
-app.listen(3000, () => console.log('Your app listening on port 3000'))
+import express from 'express'
+import dotenv from 'dotenv/config'
 
-app.get('/', (req, res) => {
-  res.send('Oh wow! this is working =)')
-})
+import router from './router/joyas.router.js'
+
+const app = express()
+
+const __dirname = import.meta.dirname
+app.use(express.json())
+app.use(express.urlencoded({ extended: true }))
+
+
+app.use('/api', router)
+
+const PORT = process.env.PORT
+
+app.listen(PORT, () => console.log('EL SERVIDOR ESTA CORRIENDO EN EL PUERTO :' + PORT))
+
+

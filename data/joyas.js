@@ -1,4 +1,4 @@
-exports.results = [
+export default [
   {
     id: 1,
     name: 'Collar Heart',
